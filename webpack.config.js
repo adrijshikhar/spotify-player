@@ -4,6 +4,8 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const DIST_DIR = path.resolve(__dirname, "public");
 const SRC_DIR = path.resolve(__dirname, "src");
+const Dotenv = require("dotenv-webpack");
+
 const config = {
   entry: {
     path: `${SRC_DIR}/app/Index.js`
@@ -66,6 +68,7 @@ const config = {
     ]
   },
   plugins: [
+    new Dotenv(),
     new CleanWebpackPlugin({
       // Simulate the removal of files
       //

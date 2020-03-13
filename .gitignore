@@ -4,3 +4,4 @@ public
 stats.json
 .vscode
 .dist
+.env
