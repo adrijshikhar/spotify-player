@@ -2,7 +2,7 @@
   "name": "spotify-player",
   "version": "1.0.0",
   "description": "A react frontend for spotify api",
-  "main": "Index.js",
+  "main": "src/app/Index.js",
   "scripts": {
     "start": "npm run build",
     "build": "webpack-dev-server --config webpack.dev.js",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://adrijshikhar.github.io/spotify-player/",
   "dependencies": {
+    "dotenv-webpack": "^1.7.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
