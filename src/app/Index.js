@@ -18,9 +18,6 @@ store.subscribe(
     });
   }, 1000)
 );
-store.subscribe(() => {
-  console.log("store updated",store.getState());
-});
 
 render(
   <Provider store={store}>

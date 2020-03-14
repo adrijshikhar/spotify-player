@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const authReducer = (state = {}, action) => {
   switch (action.type) {
     case "ACCESS_TOKEN":

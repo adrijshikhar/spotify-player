@@ -26,8 +26,6 @@ class Auth extends Component {
       this.props.setAuthToken(token.access_token);
       this.props.setRefreshToken(token.refresh_token);
     }
-    let spotifyApi = new Spotify();
-    console.log(spotifyApi);
   };
 
   render() {
@@ -50,11 +48,14 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  access_token: state.auth,
-  refresh_token: state.auth
+  access_token: state.auth.access_token,
+  refresh_token: state.auth.refresh_token
 });
+
 Auth.propTypes = {
   setAuthToken: PropTypes.func.isRequired,
-  setRefreshToken: PropTypes.func.isRequired
+  setRefreshToken: PropTypes.func.isRequired,
+  access_token: PropTypes.string,
+  refresh_token: PropTypes.string
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);
