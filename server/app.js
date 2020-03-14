@@ -18,7 +18,7 @@ let client_id = "d422bafab10a47b9b31387727b3b6873"; // Your client id
 let client_secret = "9049b05daa0a471485fe0a573f4629cd"; // Your secret
 let redirect_uri = "http://localhost:8888/callback"; // Your redirect uri
 
-let scope = "user-read-private user-read-email user-read-playback-state";
+let scope = process.env.SCOPES;
 
 const SERVER_PORT = process.env.SERVER_PORT || 8888;
 const CLIENT_PORT = process.env.SERVER_PORT || 8000;
