@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Auth from "../auth/";
 import SearchAPI from "../../api/search";
 class Home extends Component {
   componentDidMount() {
@@ -11,10 +10,14 @@ class Home extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="home-container">
         {!this.props.access_token ? (
-          <div>
-            hi <a href="http://localhost:8888/login"> Login to Spotify </a>
+          <div className="home-login">
+            <a href="http://localhost:8888/login">
+              <button className="login-button-container">
+                Login to Spotify
+              </button>
+            </a>
           </div>
         ) : (
           <div>logged in</div>

@@ -13,7 +13,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path="/auth" component={Auth} />
           <Route exact path="/test" component={Test} />
-          <Route exact path="*" component={Error404} />
+          <Route path="*" component={Error404} />
         </Switch>
       </div>
     );

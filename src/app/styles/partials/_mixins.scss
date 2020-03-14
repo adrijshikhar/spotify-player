@@ -7,3 +7,46 @@
   display: flex;
   flex-direction: column;
 }
+
+@mixin btn($scale:1) {
+  align-items: center;
+  border-radius: 100px;
+  border: 0;
+  color: $black;
+  cursor: pointer;
+  display: flex;
+  font-family: $generalFontFamilyBold;
+  font-size: $scale*1.2rem;
+  font-weight: 900;
+  min-height: $scale*3.5rem;
+  justify-content: space-around;
+  margin: 0;
+  height: fit-content;
+  min-width: 8rem;
+  padding: $gutterWidth $gutterWidth*2.4;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+@mixin btn-standard($scale) {
+  @include btn($scale);
+  background-color: $primaryColor;
+  color: $white;
+
+  &:hover {
+    background-color: $secondaryColor;
+
+  }
+}
+
+@mixin btn-standard-transparent($scale) {
+  @include btn($scale);
+  background-color: $white;
+  color: $primaryColorDark;
+  border: 2px solid $primaryColorDark;
+
+  &:hover {
+    color: $primaryColorDarker;
+    border: 2px solid $primaryColorDarker;
+  }
+}

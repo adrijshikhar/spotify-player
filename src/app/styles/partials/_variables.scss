@@ -5,26 +5,30 @@
 @include font-Lato('LatoHeavy', 'Lato-Heavy');
 
 @include font-YesevaOne('YesevaOne', 'YesevaOne-Regular');
+
+@include font-Circular('CircularBook', 'Circular-Book');
+@include font-Circular('CircularMedium', 'Circular-Medium');
+@include font-Circular('CircularBold', 'Circular-Bold');
 /*========THEME============*/
 //highlighter black bg
-$primaryColor: #ff9b40;
-$primaryColorDark: #ff8640;
-$primaryDisabledColor: #555555;
-$primaryGreyColor:#888888;
+$primaryColor: #1ED760;
+$secondaryColor:#1ED760;
+$primaryColorDark: #616467;
+$primaryColorDarker: #1A1A1A;
+$primaryGreyColor:#919496;
+$secondaryDarkColor:#1C1C1C;
+$backgroundColor:#1C273A;
 $gutterWidth: 1.25rem;
-$blackText: #2b2b2b; //black color for text
-$hlWhite: #fbfbfb; //highlighter white bg
-$hlBlack: #c4c4c4;
-$hlHover: #f0f0f0;
-$dividerColor: #dddddd;
+$black: #000; //black color for text
+$white: #fff; //black color for text
 $borderColor:#E5E5E5;
 
 /*========FONTS============*/
 //highlighter black bg
-$generalFontFamily: Lato;
-$generalFontFamilyLight: LatoLight;
-$generalFontFamilyMedium: LatoMedium;
-$generalFontFamilyBold: LatoHeavy;
+$generalFontFamily: CircularBook;
+// $generalFontFamilyLight: LatoLight;
+$generalFontFamilyMedium: CircularMedium;
+$generalFontFamilyBold: CircularBold;
 $headerFontFamily: YesevaOne;
 $text: 300;
 $heading: 500;

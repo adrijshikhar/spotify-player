@@ -1,0 +1,5 @@
+.home-container {
+  .login-button-container {
+    @include btn-standard(1);
+  }
+}
