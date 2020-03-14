@@ -1,5 +1,4 @@
 import { loadState } from "./cookie";
-import axios from "axios";
 import request from "superagent";
 
 export function getRequest(url, content) {
