@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import { getHashParams } from "../../utils/auth.js";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-
+import { Redirect } from "react-router-dom";
 import { setAuthToken, setRefreshToken } from "../../actions/authActions";
-let Spotify = require("spotify-web-api-js");
-
 class Auth extends Component {
   constructor() {
     super();
-    this.state = { authToken: "" };
+    this.state = { authToken: null };
   }
   componentDidMount() {
     this.fetchAPIDetails();
@@ -29,12 +27,7 @@ class Auth extends Component {
   };
 
   render() {
-    // const { authToken } = this.state;
-    return (
-      <div>
-        <a href="http://localhost:8888/login"> Login to Spotify </a>
-      </div>
-    );
+    return <div />;
   }
 }
 

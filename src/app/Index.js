@@ -6,7 +6,7 @@ import * as OfflinePluginRuntime from "offline-plugin/runtime";
 import App from "./components/App";
 import { BrowserRouter as Router } from "react-router-dom";
 import throttle from "lodash/throttle";
-import { loadState, saveState } from "./cookie";
+import { loadState, saveState } from "./utils/cookie";
 OfflinePluginRuntime.install();
 
 const store = configureStore(loadState());
