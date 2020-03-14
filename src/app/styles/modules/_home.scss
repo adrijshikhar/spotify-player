@@ -1,5 +1,12 @@
 .home-container {
+  background-color: $backgroundColor;
+
   .login-button-container {
     @include btn-standard(1);
+  }
+
+  .search-result-container {
+    height: inherit;
+    width: 100%;
   }
 }

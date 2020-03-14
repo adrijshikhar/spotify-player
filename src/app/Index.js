@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import configureStore from "./store.js";
 import * as OfflinePluginRuntime from "offline-plugin/runtime";
 import App from "./components/App";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import throttle from "lodash/throttle";
 import { loadState, saveState } from "./utils/cookie";
 OfflinePluginRuntime.install();
@@ -22,7 +22,7 @@ store.subscribe(
 render(
   <Provider store={store}>
     <Router>
-      <App />
+      <Route component={App} />
     </Router>
   </Provider>,
   document.getElementById("app")

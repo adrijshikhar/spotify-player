@@ -2,26 +2,36 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import SearchAPI from "../../api/search";
+import TrackListContainer from "./track/TrackListContainer";
 class Home extends Component {
-  componentDidMount() {
-    SearchAPI.searchTracks("love").then(response => {
-      console.log(response);
-    });
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchQuery: ""
+    };
   }
+
+  searchTrack = e => {
+    e.preventDefault();
+    this.setState({
+      searchQuery: e.target.value
+    });
+  };
+
   render() {
+    const { searchQuery } = this.state;
     return (
       <div className="home-container">
-        {!this.props.access_token ? (
-          <div className="home-login">
-            <a href="http://localhost:8888/login">
-              <button className="login-button-container">
-                Login to Spotify
-              </button>
-            </a>
-          </div>
-        ) : (
-          <div>logged in</div>
-        )}
+        <div className="search-bar-container">
+          <input
+            type="text"
+            className="search-bar"
+            onChange={e => this.searchTrack(e)}
+          />
+        </div>
+        <div className="search-result-container">
+          <TrackListContainer searchQuery={searchQuery} />
+        </div>
       </div>
     );
   }

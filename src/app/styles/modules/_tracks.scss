@@ -1,0 +1,66 @@
+.tracks-card-container {
+
+
+  .card-container {
+    @include display-column();
+    background-color: $cardBackgroundColor;
+    border-radius: 8px;
+    color: $white;
+    display: inline-block;
+    justify-content: space-between;
+    margin: $gutterWidth;
+    height: 12rem;
+    padding: $gutterWidth;
+    width: 8rem;
+    overflow: hidden;
+    
+    .card-content-container {
+      @include display-column();
+      align-items: center;
+      justify-content: center;
+
+      .card-image-container {
+        @include display-column();
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-bottom: $gutterWidth;
+        background-color: $primaryColorDarker;
+        height: $gutterWidth*5;
+        width: $gutterWidth*5;
+
+        .card-image {
+          border-radius: 50%;
+          height: inherit;
+          width: inherit;
+        }
+      }
+
+      .card-content {
+        @include display-column();
+        align-items: flex-start;
+        width: 100%;
+
+        .card-content-heading {
+          font-size: $normalFontSize*0.6;
+          line-height: $normaLineHeight*0.6;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .card-content-subheading {
+          font-size: $normalFontSize*0.4;
+          color: $primaryGreyColor;
+          line-height: $normaLineHeight*0.4;
+          white-space: nowrap;
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

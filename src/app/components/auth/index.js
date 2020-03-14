@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getHashParams } from "../../utils/auth.js";
+import { getHashParams } from "../../utils/utils.js";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { Redirect } from "react-router-dom";
