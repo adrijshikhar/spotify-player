@@ -17,13 +17,14 @@ class Auth extends Component {
 
   fetchAPIDetails = () => {
     // Set token
-    let auth_token = getHashParams().access_token;
-    if (auth_token) {
-      // Set token
+    let token = getHashParams();
+    if (token) {
       this.setState({
-        authToken: auth_token
+        accessToken: token.access_token,
+        refreshToken: token.refresh_token
       });
-      this.props.setAuthToken(auth_token);
+      this.props.setAuthToken(token.access_token);
+      this.props.setRefreshToken(token.refresh_token);
     }
     let spotifyApi = new Spotify();
     console.log(spotifyApi);
@@ -53,6 +54,7 @@ const mapStateToProps = state => ({
   refresh_token: state.auth
 });
 Auth.propTypes = {
-  setAuthToken: PropTypes.func.isRequired
+  setAuthToken: PropTypes.func.isRequired,
+  setRefreshToken: PropTypes.func.isRequired
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);
