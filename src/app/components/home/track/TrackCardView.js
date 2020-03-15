@@ -2,12 +2,12 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import defaultImg from "../../../images/default.png";
 function TrackCardView(props) {
-  console.log(props.data);
+  console.log(props.image);
   return (
     <div className="card-container">
       <div className="card-content-container">
         <div className="card-image-container">
-          <img className="card-image" src={props.image[0].url || defaultImg} />
+          <img className="card-image" src={props.image[0].url} />
         </div>
         <div className="card-content">
           <div className="card-content-heading">{props.name}</div>

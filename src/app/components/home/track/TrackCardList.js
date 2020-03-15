@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import Preloader from "../../../utils/Preloader";
+import defaultImg from "../../../images/default.png";
 import TrackCardView from "./TrackCardView";
 class TrackCardList extends Component {
   constructor(props) {
@@ -30,7 +31,11 @@ class TrackCardList extends Component {
           <TrackCardView
             key={index}
             name={data.name}
-            image={data.images ? data.images : [{ url: "" }]}
+            image={
+              data.images !== undefined && data.images.length !== 0
+                ? data.images
+                : [{ url: defaultImg }]
+            }
             data={data}
             subheadings={data.artists || data.genres}
             searchType={searchType}
