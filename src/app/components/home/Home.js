@@ -9,7 +9,7 @@ class Home extends Component {
     super(props);
     this.state = {
       searchQuery: "",
-      markets: "",
+      markets: [],
       popularity: Popularity[0]
     };
   }
@@ -38,7 +38,7 @@ class Home extends Component {
       }
     }
     this.setState({
-      markets: formData.get("market"),
+      markets: formData.getAll("market"),
       popularity
     });
   };
@@ -65,7 +65,7 @@ class Home extends Component {
                 return (
                   <label htmlFor={market} key={index}>
                     <input
-                      type="radio"
+                      type="checkbox"
                       name="market"
                       value={market}
                       id={market}

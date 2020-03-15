@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import Preloader from "../../../utils/Preloader";
 import TrackCardView from "./TrackCardView";
+import { connect } from "react-redux";
 class TrackCardList extends Component {
   render() {
     let { tracks, isFetchingTracks, popularity } = this.props;
@@ -9,7 +10,8 @@ class TrackCardList extends Component {
       return <Preloader size={4} />;
     }
     let tracksList = [];
-    tracksList = tracks.items.map((track, index) => {
+    console.log(tracks);
+    tracksList = tracks.map((track, index) => {
       if (
         (popularity.valueMin <= track.popularity &&
           track.popularity <= popularity.valueMax) ||
@@ -27,9 +29,14 @@ class TrackCardList extends Component {
     return <div className="tracks-card-container">{tracksList}</div>;
   }
 }
+
+const mapStateToProps = state => ({
+  tracks: state.searchResults
+});
+
 TrackCardList.propTypes = {
-  tracks: PropTypes.object,
+  tracks: PropTypes.array,
   isFetchingTracks: PropTypes.bool,
   popularity: PropTypes.object
 };
-export default TrackCardList;
+export default connect(mapStateToProps, null)(TrackCardList);

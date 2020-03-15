@@ -19,6 +19,7 @@ store.subscribe(
   }, 1000)
 );
 
+// store.subscribe(() => console.log("store update", store.getState()));
 render(
   <Provider store={store}>
     <Router>
