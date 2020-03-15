@@ -13,11 +13,11 @@ export default class SearchAPI {
     return getRequest(url, content);
   }
 
-  static searchTracksByArtistName(params) {
+  static searchArtists(params) {
     let url = `${base_url}/search/`;
     let content = {
       q: params.searchInput || "rock",
-      type: "track,artist",
+      type: "artist",
       offset: params.offset
     };
     return getRequest(url, content);

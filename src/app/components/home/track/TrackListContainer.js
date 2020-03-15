@@ -17,8 +17,8 @@ class TrackListContainer extends Component {
       let query = this.generateTrackQuery(this.props);
       this.getTracks(query);
     } else {
-      let query = this.generateArtistTrackQuery(this.props);
-      this.getArtistTracks(query);
+      let query = this.generateArtistQuery(this.props);
+      this.getArtists(query);
     }
   }
 
@@ -31,8 +31,8 @@ class TrackListContainer extends Component {
         let query = this.generateTrackQuery(nextProps);
         this.getTracks(query);
       } else {
-        let query = this.generateArtistTrackQuery(nextProps);
-        this.getArtistTracks(query);
+        let query = this.generateArtistQuery(nextProps);
+        this.getArtists(query);
       }
     }
   }
@@ -44,14 +44,14 @@ class TrackListContainer extends Component {
       offset: props.offset
     };
   }
-  generateArtistTrackQuery(props) {
+  generateArtistQuery(props) {
     return {
       searchInput: props.searchQuery ? props.searchQuery : "peaky",
       offset: props.offset
     };
   }
-  getArtistTracks(query) {
-    SearchAPI.searchTracksByArtistName(query).then(response => {
+  getArtists(query) {
+    SearchAPI.searchArtists(query).then(response => {
       this.setState({
         isFetching: false,
         tracks: response.artists

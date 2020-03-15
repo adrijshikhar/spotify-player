@@ -14,9 +14,9 @@ let cors = require("cors");
 let querystring = require("querystring");
 let cookieParser = require("cookie-parser");
 
-let client_id = process.env.CLIENT_ID; // Your client id
-let client_secret = process.env.CLIENT_SECRET; // Your secret
-let redirect_uri = process.env.REDIRECT_URI; // Your redirect uri
+let client_id = "d422bafab10a47b9b31387727b3b6873"; // Your client id
+let client_secret = "9049b05daa0a471485fe0a573f4629cd"; // Your secret
+let redirect_uri = "http://localhost:8888/callback"; // Your redirect uri
 
 let scope = process.env.SCOPES;
 
