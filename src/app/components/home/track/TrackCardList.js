@@ -47,7 +47,7 @@ class TrackCardList extends Component {
 }
 TrackCardList.propTypes = {
   data: PropTypes.object,
-  searchType: PropTypes.object,
+  searchType: PropTypes.string,
   isFetchingTracks: PropTypes.bool,
   popularity: PropTypes.object
 };
