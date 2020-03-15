@@ -2,7 +2,6 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import defaultImg from "../../../images/default.png";
 function TrackCardView(props) {
-  console.log(props.image);
   return (
     <div className="card-container">
       <div className="card-content-container">

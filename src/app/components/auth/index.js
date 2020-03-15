@@ -23,7 +23,7 @@ class Auth extends Component {
       });
       this.props.setAuthToken(token.access_token);
       this.props.setRefreshToken(token.refresh_token);
-      window.location.replace("/")
+      window.location.replace("/");
     }
   };
 

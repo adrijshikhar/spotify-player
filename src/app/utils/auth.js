@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { loadState } from "./cookie";
 import request from "superagent";
 
