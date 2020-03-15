@@ -81,6 +81,13 @@ class Home extends Component {
           />
           <input
             type="text"
+            name="trackArtist"
+            className="search-bar"
+            placeholder="search tracks by artist "
+            onChange={e => this.search(e)}
+          />
+          <input
+            type="text"
             name="artist"
             className="search-bar"
             placeholder="search artist "

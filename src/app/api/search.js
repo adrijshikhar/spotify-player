@@ -22,4 +22,13 @@ export default class SearchAPI {
     };
     return getRequest(url, content);
   }
+  static searchTracksByArtist(params) {
+    let url = `${base_url}/search/`;
+    let content = {
+      q: `artist: ${params.searchInput}`,
+      type: "track",
+      offset: params.offset
+    };
+    return getRequest(url, content);
+  }
 }
