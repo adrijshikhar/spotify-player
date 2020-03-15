@@ -15,8 +15,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch>
-          <Route path="/" component={RootComponent} />
-          <Route exact path="/auth" component={Auth} />
+          <Route exact path="/" component={RootComponent} />
+          <Route path="/auth" component={Auth} />
           <Route exact path="/test" component={Test} />
           <Route path="*" component={Error404} />
         </Switch>

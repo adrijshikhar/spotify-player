@@ -7,7 +7,7 @@ import { setAuthToken, setRefreshToken } from "../../actions/authActions";
 class Auth extends Component {
   constructor() {
     super();
-    this.state = { authToken: null };
+    this.state = { accessToken: null };
   }
   componentDidMount() {
     this.fetchAPIDetails();
@@ -23,6 +23,7 @@ class Auth extends Component {
       });
       this.props.setAuthToken(token.access_token);
       this.props.setRefreshToken(token.refresh_token);
+      window.location.replace("/")
     }
   };
 

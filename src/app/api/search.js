@@ -11,4 +11,13 @@ export default class SearchAPI {
     };
     return getRequest(url, content);
   }
+
+  static searchTracksByArtistName(params) {
+    let url = `${base_url}/search/`;
+    let content = {
+      q: params.searchInput || "rock",
+      type: "track,artist"
+    };
+    return getRequest(url, content);
+  }
 }

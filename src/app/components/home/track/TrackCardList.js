@@ -3,24 +3,37 @@ import { PropTypes } from "prop-types";
 import Preloader from "../../../utils/Preloader";
 import TrackCardView from "./TrackCardView";
 class TrackCardList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      subheadings:
+        this.props.searchType === "track"
+          ? props.data.artists
+          : props.data.genres
+    };
+  }
+
   render() {
-    let { tracks, isFetchingTracks, popularity } = this.props;
+    let { data, isFetchingTracks, popularity, searchType } = this.props;
     if (isFetchingTracks) {
       return <Preloader size={4} />;
     }
     let tracksList = [];
-    tracksList = tracks.items.map((track, index) => {
+
+    tracksList = data.items.map((data, index) => {
       if (
-        (popularity.valueMin <= track.popularity &&
-          track.popularity <= popularity.valueMax) ||
+        (popularity.valueMin <= data.popularity &&
+          data.popularity <= popularity.valueMax) ||
         popularity.valueMin === 0
       )
         return (
           <TrackCardView
             key={index}
-            name={track.name}
-            artists={track.artists}
-            track={track}
+            name={data.name}
+            image={data.images ? data.images : [{ url: "" }]}
+            data={data}
+            subheadings={data.artists || data.genres}
+            searchType={searchType}
           />
         );
     });
@@ -28,7 +41,8 @@ class TrackCardList extends Component {
   }
 }
 TrackCardList.propTypes = {
-  tracks: PropTypes.object,
+  data: PropTypes.object,
+  searchType: PropTypes.object,
   isFetchingTracks: PropTypes.bool,
   popularity: PropTypes.object
 };

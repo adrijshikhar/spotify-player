@@ -8,16 +8,18 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchQuery: "",
+      searchQuery: "peaky",
       markets: "",
-      popularity: Popularity[0]
+      popularity: Popularity[0],
+      searchType: "track"
     };
   }
 
-  searchTrack = e => {
+  search = e => {
     e.preventDefault();
     this.setState({
-      searchQuery: e.target.value
+      searchQuery: e.target.value,
+      searchType: e.target.name
     });
   };
 
@@ -40,15 +42,24 @@ class Home extends Component {
     });
   };
   render() {
-    const { searchQuery, markets, popularity } = this.state;
+    const { searchQuery, markets, popularity, searchType } = this.state;
     const filters = { markets: Object.values(markets), popularity };
     return (
       <div className="home-container">
         <div className="search-bar-container">
           <input
             type="text"
+            name="track"
             className="search-bar"
-            onChange={e => this.searchTrack(e)}
+            placeholder="search tracks"
+            onChange={e => this.search(e)}
+          />
+          <input
+            type="text"
+            name="artist"
+            className="search-bar"
+            placeholder="search tracks by artist name"
+            onChange={e => this.search(e)}
           />
         </div>
         <form
@@ -91,7 +102,11 @@ class Home extends Component {
           <input type="submit" value="Submit" />
         </form>
         <div className="search-result-container">
-          <TrackListContainer searchQuery={searchQuery} filters={filters} />
+          <TrackListContainer
+            searchQuery={searchQuery}
+            filters={filters}
+            searchType={searchType}
+          />
         </div>
       </div>
     );
