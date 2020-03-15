@@ -24,9 +24,6 @@ class Home extends Component {
   filterSearchHandler = e => {
     e.preventDefault();
     let formData = new FormData(this.filterSearch);
-    for (let pair of formData.entries()) {
-      console.log(`${pair[0]}, ${pair[1]}`);
-    }
     let form_data_popularity = parseInt(formData.get("popularity"));
 
     let popularity;
@@ -38,7 +35,7 @@ class Home extends Component {
       }
     }
     this.setState({
-      markets: formData.get("market"),
+      markets: formData.get("market") || undefined,
       popularity
     });
   };
@@ -62,9 +59,14 @@ class Home extends Component {
           <div className="filter-container">
             <div className="filter-market">
               {Markets.map((market, index) => {
+                let defaultChecked = false;
+                if (index === 0) {
+                  defaultChecked = true;
+                }
                 return (
                   <label htmlFor={market} key={index}>
                     <input
+                      defaultChecked={defaultChecked}
                       type="radio"
                       name="market"
                       value={market}
