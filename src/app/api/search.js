@@ -5,7 +5,8 @@ export default class SearchAPI {
   static searchTracks(params) {
     let url = `${base_url}/search/`;
     let content = {
-      q: params || "rock",
+      q: params.searchInput || "rock",
+      market: params.markets || undefined,
       type: "track"
     };
     return getRequest(url, content);

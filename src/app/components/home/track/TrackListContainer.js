@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import TrackCardList from "./TrackCardList";
 import SearchAPI from "../../../api/search";
 import PropTypes from "prop-types";
+import _ from "lodash";
+
 class TrackListContainer extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,7 @@ class TrackListContainer extends Component {
     };
   }
   componentDidMount() {
-    let query = this.props.searchQuery ? this.props.searchQuery : "peaky";
+    let query = this.generateQuery(this.props);
     this.getTracks(query);
   }
 
@@ -20,10 +22,17 @@ class TrackListContainer extends Component {
       this.setState({
         isFetchingTracks: true
       });
-      this.getTracks(nextProps.searchQuery);
+      let query = this.generateQuery(nextProps);
+      this.getTracks(query);
     }
   }
 
+  generateQuery(props) {
+    return {
+      searchInput: props.searchQuery ? props.searchQuery : "peaky",
+      markets: props.market || ""
+    };
+  }
   getTracks(query) {
     SearchAPI.searchTracks(query).then(response => {
       this.setState({
@@ -34,13 +43,20 @@ class TrackListContainer extends Component {
   }
   render() {
     const { isFetchingTracks, tracks } = this.state;
+    const { filters } = this.props;
     return (
-      <TrackCardList isFetchingTracks={isFetchingTracks} tracks={tracks} />
+      <TrackCardList
+        isFetchingTracks={isFetchingTracks}
+        popularity={filters.popularity}
+        tracks={tracks}
+      />
     );
   }
 }
+
 TrackListContainer.propTypes = {
-  searchQuery: PropTypes.string.isRequired
+  searchQuery: PropTypes.string.isRequired,
+  filters: PropTypes.object
 };
 
 export default TrackListContainer;

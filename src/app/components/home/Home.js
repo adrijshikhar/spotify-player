@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import SearchAPI from "../../api/search";
 import TrackListContainer from "./track/TrackListContainer";
+import { Markets } from "../../constants/markets";
+import { Popularity } from "../../constants/popularity";
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchQuery: ""
+      searchQuery: "",
+      markets: "",
+      popularity: Popularity[0]
     };
   }
 
@@ -18,8 +21,30 @@ class Home extends Component {
     });
   };
 
+  filterSearchHandler = e => {
+    e.preventDefault();
+    let formData = new FormData(this.filterSearch);
+    for (let pair of formData.entries()) {
+      console.log(`${pair[0]}, ${pair[1]}`);
+    }
+    let form_data_popularity = parseInt(formData.get("popularity"));
+
+    let popularity;
+    for (let index = 0; index < Popularity.length; index++) {
+      const element = Popularity[index];
+      if (element.valueMin === form_data_popularity) {
+        popularity = element;
+        break;
+      }
+    }
+    this.setState({
+      markets: formData.get("market"),
+      popularity
+    });
+  };
   render() {
-    const { searchQuery } = this.state;
+    const { searchQuery, markets, popularity } = this.state;
+    const filters = { markets: Object.values(markets), popularity };
     return (
       <div className="home-container">
         <div className="search-bar-container">
@@ -29,8 +54,42 @@ class Home extends Component {
             onChange={e => this.searchTrack(e)}
           />
         </div>
+        <form
+          className="filter-search-form"
+          ref={el => (this.filterSearch = el)}
+          onSubmit={e => this.filterSearchHandler(e)}
+        >
+          <div className="filter-container">
+            <div className="filter-market">
+              {Markets.map((market, index) => {
+                return (
+                  <label htmlFor={market} key={index}>
+                    <input
+                      type="radio"
+                      name="market"
+                      value={market}
+                      id={market}
+                    />
+                    {market}
+                  </label>
+                );
+              })}
+            </div>
+            <label htmlFor="popularity">Popularity</label>
+            <select id="popularity" name="popularity">
+              {Popularity.map((popularity, index) => {
+                return (
+                  <option key={index} value={popularity.valueMin}>
+                    {popularity.key}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <input type="submit" value="Submit" />
+        </form>
         <div className="search-result-container">
-          <TrackListContainer searchQuery={searchQuery} />
+          <TrackListContainer searchQuery={searchQuery} filters={filters} />
         </div>
       </div>
     );

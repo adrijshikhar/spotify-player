@@ -2,7 +2,7 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import defaultImg from "../../../images/default.png";
 function TrackCardView(props) {
-  console.log(props);
+  // console.log(props.track);
   return (
     <div className="card-container">
       <div className="card-content-container">
@@ -23,6 +23,9 @@ function TrackCardView(props) {
   );
 }
 
-TrackCardView.propTypes = {};
+TrackCardView.propTypes = {
+  name: PropTypes.string,
+  artists: PropTypes.array
+};
 
 export default TrackCardView;

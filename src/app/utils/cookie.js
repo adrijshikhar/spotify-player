@@ -20,3 +20,11 @@ export const saveState = state => {
     console.log("Cookies not saved", error);
   }
 };
+
+export const removeState = state => {
+  try {
+    localStorage.removeItem(state);
+  } catch (error) {
+    console.log("Cookies not deleted", error);
+  }
+};
