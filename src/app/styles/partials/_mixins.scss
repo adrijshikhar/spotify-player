@@ -41,12 +41,23 @@
 
 @mixin btn-standard-transparent($scale) {
   @include btn($scale);
-  background-color: $white;
+  background-color: transparent;
   color: $primaryColorDark;
   border: 2px solid $primaryColorDark;
 
   &:hover {
-    color: $primaryColorDarker;
-    border: 2px solid $primaryColorDarker;
+    color: $white;
+    border: 2px solid $white;
   }
+}
+
+@mixin input-std {
+  color: $black;
+  font-size: $normalFontSize*0.8;
+  padding: $gutterWidth*0.8 $gutterWidth*2;
+  height: 2rem;
+  line-height: $normalLineHeight;
+  border: 0;
+  border-radius: 250px;
+  text-overflow: ellipsis;
 }

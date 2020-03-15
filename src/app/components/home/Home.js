@@ -55,20 +55,22 @@ class Home extends Component {
     const filters = { markets: Object.values(markets), popularity };
     return (
       <div className="home-container">
-        <button
-          className="prev-page"
-          name="prev"
-          onClick={e => this.setOffset(e)}
-        >
-          &lt; Previous page
-        </button>
-        <button
-          className="next-page"
-          name="next"
-          onClick={e => this.setOffset(e)}
-        >
-          Next page &gt;
-        </button>
+        <div className="navigation-container">
+          <button
+            className="home-navigation-button"
+            name="prev"
+            onClick={e => this.setOffset(e)}
+          >
+            &lt; Previous page
+          </button>
+          <button
+            className="home-navigation-button"
+            name="next"
+            onClick={e => this.setOffset(e)}
+          >
+            Next page &gt;
+          </button>
+        </div>
         <div className="search-bar-container">
           <input
             type="text"
@@ -112,7 +114,7 @@ class Home extends Component {
               })}
             </div>
             <label htmlFor="popularity">Popularity</label>
-            <select id="popularity" name="popularity">
+            <select id="popularity" name="popularity" className="popularity">
               {Popularity.map((popularity, index) => {
                 return (
                   <option key={index} value={popularity.valueMin}>
@@ -122,7 +124,9 @@ class Home extends Component {
               })}
             </select>
           </div>
-          <input type="submit" value="Submit" />
+          <button type="submit" value="Submit" className="submit-button">
+            Submit
+          </button>
         </form>
         <div className="search-result-container">
           <TrackListContainer

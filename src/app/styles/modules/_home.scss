@@ -1,9 +1,65 @@
-.home-container {
+.home-container,
+.home-login {
+  padding: $gutterWidth;
   background-color: $backgroundColor;
+  padding: $gutterWidth;
+
+  .navigation-container {
+    @include display-row();
+    margin: $gutterWidth 0;
+    justify-content: space-between;
+  }
 
   .login-button-container {
     @include btn-standard(1);
   }
+
+  .home-navigation-button {
+    @include btn-standard(1);
+    display: inline-block;
+  }
+
+  .search-bar-container {
+    @include display-row();
+    width: 100%;
+    margin: $gutterWidth 0;
+    justify-content: space-between;
+
+    .search-bar {
+      @include input-std()
+    }
+  }
+
+  .filter-search-form {
+    padding: $gutterWidth;
+
+    .filter-container {
+      width: 100%;
+
+
+      label {
+        margin: $gutterWidth;
+        height: 4rem;
+        font-size: $normalFontSize;
+      }
+
+      .popularity {
+        margin: $gutterWidth;
+        font-size: $normalFontSize;
+        option{
+        font-size: $normalFontSize;
+
+        }
+      }
+    }
+
+    .submit-button {
+      @include btn-standard-transparent(1);
+
+    }
+  }
+
+
 
   .search-result-container {
     height: inherit;

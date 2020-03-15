@@ -45,7 +45,7 @@
 
         .card-content-heading {
           font-size: $normalFontSize*0.6;
-          line-height: $normaLineHeight*0.6;
+          line-height: $normalLineHeight*0.6;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
@@ -56,7 +56,7 @@
         .card-content-subheading {
           font-size: $normalFontSize*0.4;
           color: $primaryGreyColor;
-          line-height: $normaLineHeight*0.4;
+          line-height: $normalLineHeight*0.4;
           white-space: nowrap;
 
           overflow: hidden;
