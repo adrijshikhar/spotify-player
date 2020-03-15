@@ -7,7 +7,8 @@ export default class SearchAPI {
     let content = {
       q: params.searchInput || "rock",
       market: params.markets || undefined,
-      type: "track"
+      type: "track",
+      offset: params.offset
     };
     return getRequest(url, content);
   }
@@ -16,7 +17,8 @@ export default class SearchAPI {
     let url = `${base_url}/search/`;
     let content = {
       q: params.searchInput || "rock",
-      type: "track,artist"
+      type: "track,artist",
+      offset: params.offset
     };
     return getRequest(url, content);
   }

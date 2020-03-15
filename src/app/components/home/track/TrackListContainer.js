@@ -40,12 +40,14 @@ class TrackListContainer extends Component {
   generateTrackQuery(props) {
     return {
       searchInput: props.searchQuery ? props.searchQuery : "peaky",
-      markets: props.market || ""
+      markets: props.market || "",
+      offset: props.offset
     };
   }
   generateArtistTrackQuery(props) {
     return {
-      searchInput: props.searchQuery ? props.searchQuery : "peaky"
+      searchInput: props.searchQuery ? props.searchQuery : "peaky",
+      offset: props.offset
     };
   }
   getArtistTracks(query) {

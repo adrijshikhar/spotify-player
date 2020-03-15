@@ -11,7 +11,8 @@ class Home extends Component {
       searchQuery: "peaky",
       markets: "",
       popularity: Popularity[0],
-      searchType: "track"
+      searchType: "track",
+      offset: 0
     };
   }
 
@@ -22,7 +23,15 @@ class Home extends Component {
       searchType: e.target.name
     });
   };
-
+  setOffset = e => {
+    e.preventDefault();
+    let change = 0;
+    if (e.target.name === "prev" && this.state.offset > 0) change = -20;
+    else if (e.target.name === "next") change = 20;
+    this.setState({
+      offset: this.state.offset + change
+    });
+  };
   filterSearchHandler = e => {
     e.preventDefault();
     let formData = new FormData(this.filterSearch);
@@ -42,10 +51,24 @@ class Home extends Component {
     });
   };
   render() {
-    const { searchQuery, markets, popularity, searchType } = this.state;
+    const { searchQuery, markets, popularity, searchType, offset } = this.state;
     const filters = { markets: Object.values(markets), popularity };
     return (
       <div className="home-container">
+        <button
+          className="prev-page"
+          name="prev"
+          onClick={e => this.setOffset(e)}
+        >
+          &lt; Previous page
+        </button>
+        <button
+          className="next-page"
+          name="next"
+          onClick={e => this.setOffset(e)}
+        >
+          Next page &gt;
+        </button>
         <div className="search-bar-container">
           <input
             type="text"
@@ -106,6 +129,7 @@ class Home extends Component {
             searchQuery={searchQuery}
             filters={filters}
             searchType={searchType}
+            offset={offset}
           />
         </div>
       </div>
