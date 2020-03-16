@@ -3,6 +3,9 @@ import { PropTypes } from "prop-types";
 import Preloader from "../../../utils/Preloader";
 import defaultImg from "../../../images/default.png";
 import TrackCardView from "./TrackCardView";
+
+import Player from "./Player";
+
 class TrackCardList extends Component {
   constructor(props) {
     super(props);
@@ -10,12 +13,20 @@ class TrackCardList extends Component {
       subheadings:
         this.props.searchType === "track"
           ? props.data.artists
-          : props.data.genres
+          : props.data.genres,
+      previewPlayer: ""
     };
   }
-
+  playPreviewTack = (isFetchingTrackPreview, track) => {
+    this.setState({
+      previewPlayer: (
+        <Player isFetchingTrackPreview={isFetchingTrackPreview} track={track} />
+      )
+    });
+  };
   render() {
     let { data, isFetchingTracks, popularity, searchType } = this.props;
+    let { previewPlayer } = this.state;
     if (isFetchingTracks) {
       return <Preloader size={4} />;
     }
@@ -31,6 +42,7 @@ class TrackCardList extends Component {
           <TrackCardView
             key={index}
             name={data.name}
+            id={data.id}
             image={
               data.images !== undefined && data.images.length !== 0
                 ? data.images
@@ -39,10 +51,16 @@ class TrackCardList extends Component {
             data={data}
             subheadings={data.artists || data.genres}
             searchType={searchType}
+            playPreviewTack={this.playPreviewTack}
           />
         );
     });
-    return <div className="tracks-card-container">{tracksList}</div>;
+    return (
+      <div className="tracks-card-container">
+        {tracksList}
+        {previewPlayer}
+      </div>
+    );
   }
 }
 TrackCardList.propTypes = {

@@ -1,6 +1,5 @@
 .tracks-card-container {
 
-
   .card-container {
     @include display-column();
     background-color: $cardBackgroundColor;
@@ -13,7 +12,14 @@
     padding: $gutterWidth;
     width: 8rem;
     overflow: hidden;
-    
+    position: relative;
+
+    &:hover {
+      .card-player {
+        display: flex !important;
+      }
+    }
+
     .card-content-container {
       @include display-column();
       align-items: center;
@@ -61,6 +67,25 @@
 
           overflow: hidden;
           text-overflow: ellipsis;
+        }
+
+        .card-player {
+          @include display-column();
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          bottom: $gutterWidth;
+          right: $gutterWidth;
+          background-color: $playIconBackgorundColor;
+          border-radius: 50%;
+          width: $gutterWidth*2;
+          height: $gutterWidth*2;
+          display: none;
+          cursor: pointer;
+
+          .card-play-icon {
+            width: $gutterWidth;
+          }
         }
       }
     }

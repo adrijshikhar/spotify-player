@@ -2,7 +2,7 @@
 import { loadState, saveState, removeState } from "./cookie";
 import request from "superagent";
 import AuthAPI from "../api/auth";
-export function getRequest(url, content) {
+export function getRequest(url, content = {}) {
   const token = loadState();
 
   return new Promise((resolve, reject) => {

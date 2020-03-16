@@ -22,6 +22,7 @@ export default class SearchAPI {
     };
     return getRequest(url, content);
   }
+
   static searchTracksByArtist(params) {
     let url = `${base_url}/search/`;
     let content = {
@@ -30,5 +31,10 @@ export default class SearchAPI {
       offset: params.offset
     };
     return getRequest(url, content);
+  }
+
+  static getTrackPreview(params) {
+    let url = `${base_url}/tracks/${params.id}`;
+    return getRequest(url);
   }
 }

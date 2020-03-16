@@ -1,0 +1,10 @@
+.track-player-container {
+  bottom: 20px;
+  position: fixed;
+  width: 100vw;
+
+  .track-player {
+    width: 100vw;
+    height: $gutterWidth * 4;
+  }
+}
