@@ -8,7 +8,7 @@ class TrackListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tracks: { items: [] },
+      data: { items: [] },
       isFetching: true
     };
   }
@@ -52,7 +52,7 @@ class TrackListContainer extends Component {
     SearchAPI.searchArtists(query).then(response => {
       this.setState({
         isFetching: false,
-        tracks: response.artists
+        data: response.artists
       });
     });
   }
@@ -60,7 +60,7 @@ class TrackListContainer extends Component {
     SearchAPI.searchTracks(query).then(response => {
       this.setState({
         isFetching: false,
-        tracks: response.tracks
+        data: response.tracks
       });
     });
   }
@@ -68,31 +68,21 @@ class TrackListContainer extends Component {
     SearchAPI.searchTracksByArtist(query).then(response => {
       this.setState({
         isFetching: false,
-        tracks: response.tracks
+        data: response.tracks
       });
     });
   }
   render() {
-    const { isFetching, tracks } = this.state;
+    const { isFetching, data } = this.state;
     const { filters, searchType } = this.props;
-    if (searchType === "track")
-      return (
-        <TrackCardList
-          isFetching={isFetching}
-          popularity={filters.popularity}
-          data={tracks}
-          searchType={searchType}
-        />
-      );
-    else
-      return (
-        <TrackCardList
-          isFetching={isFetching}
-          popularity={filters.popularity}
-          data={tracks}
-          searchType={searchType}
-        />
-      );
+    return (
+      <TrackCardList
+        isFetching={isFetching}
+        popularity={filters.popularity}
+        data={data}
+        searchType={searchType}
+      />
+    );
   }
 }
 
