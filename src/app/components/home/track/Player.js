@@ -3,7 +3,6 @@ import { PropTypes } from "prop-types";
 
 class Player extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="track-player-container">
         <audio

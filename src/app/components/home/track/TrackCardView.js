@@ -61,7 +61,7 @@ class TrackCardView extends Component {
 }
 
 TrackCardView.propTypes = {
-  id: PropTypes.string, 
+  id: PropTypes.string,
   data: PropTypes.object,
   name: PropTypes.string,
   image: PropTypes.array,
