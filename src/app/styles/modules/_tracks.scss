@@ -91,3 +91,100 @@
     }
   }
 }
+
+.tracks-list-container {
+  width: 100%;
+
+  .card-container {
+    @include display-row();
+    background-color: $cardBackgroundColor;
+    border-radius: 8px;
+    color: $white;
+    display: block;
+    justify-content: space-between;
+    margin: $gutterWidth*0.2 0;
+    padding: $gutterWidth*0.2 $gutterWidth;
+    width: auto;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+      .card-player {
+        display: flex !important;
+      }
+    }
+
+    .card-content-container {
+      @include display-row();
+      align-items: center;
+      justify-content: center;
+
+      .card-image-container {
+        @include display-column();
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        height: $gutterWidth*3;
+        width: $gutterWidth*3;
+
+        .card-image {
+          border-radius: 50%;
+          height: $gutterWidth*2;
+          width: $gutterWidth*2;
+          background-position: center;
+          background-size: cover;
+        }
+      }
+
+      .card-content {
+        @include display-row();
+        align-items: center;
+        width: 100%;
+
+        .card-content-heading {
+          font-size: $normalFontSize*0.6;
+          line-height: $normalLineHeight*0.6;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .card-content-subheading {
+          font-size: $normalFontSize*0.4;
+          color: $primaryGreyColor;
+          line-height: $normalLineHeight*0.4;
+          white-space: nowrap;
+          margin: 0 $gutterWidth;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        
+      }
+    }
+  }
+}
+.card-player {
+  @include display-column();
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: $gutterWidth;
+  right: $gutterWidth;
+  background-color: $playIconBackgorundColor;
+  border-radius: 50%;
+  width: $gutterWidth*2;
+  height: $gutterWidth*2;
+  display: none;
+  cursor: pointer;
+
+  .card-play-icon {
+    width: $gutterWidth;
+  }
+}
+
+.view-switch-button{
+  @include btn-standard(1);
+}

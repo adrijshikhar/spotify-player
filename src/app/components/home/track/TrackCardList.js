@@ -14,7 +14,8 @@ class TrackCardList extends Component {
         this.props.searchType === "track"
           ? props.data.artists
           : props.data.genres,
-      previewPlayer: ""
+      previewPlayer: "",
+      card: 0
     };
   }
   playPreviewTack = (isFetchingTrackPreview, track) => {
@@ -24,9 +25,14 @@ class TrackCardList extends Component {
       )
     });
   };
+  switchView = () => {
+    this.setState({
+      card: !this.state.card
+    });
+  };
   render() {
     let { data, isFetchingTracks, popularity, searchType } = this.props;
-    let { previewPlayer } = this.state;
+    let { previewPlayer, card } = this.state;
     if (isFetchingTracks) {
       return <Preloader size={4} />;
     }
@@ -56,7 +62,13 @@ class TrackCardList extends Component {
         );
     });
     return (
-      <div className="tracks-card-container">
+      <div className={`tracks-${card ? "card" : "list"}-container`}>
+        <button
+          className="view-switch-button"
+          onClick={() => this.switchView()}
+        >
+          grid or list
+        </button>
         {tracksList}
         {previewPlayer}
       </div>
