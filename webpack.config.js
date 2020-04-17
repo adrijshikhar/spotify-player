@@ -1,10 +1,9 @@
 const webpack = require("webpack");
 const path = require("path");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const DIST_DIR = path.resolve(__dirname, "public");
 const SRC_DIR = path.resolve(__dirname, "src");
-const Dotenv = require("dotenv-webpack");
 
 const config = {
   entry: {
@@ -35,9 +34,7 @@ const config = {
         use: {
           loader: "html-loader",
           options: {
-            minimize: false,
-            removeComments: true,
-            collapseWhitespace: false
+            minimize: true,
           }
         }
       },
@@ -68,7 +65,6 @@ const config = {
     ]
   },
   plugins: [
-    new Dotenv(),
     new CleanWebpackPlugin({
       // Simulate the removal of files
       //

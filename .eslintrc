@@ -10,7 +10,6 @@
     ],
     "plugins": [
         "react",
-        "prettier"
     ],
     "parser": "babel-eslint",
     "parserOptions": {
@@ -27,7 +26,6 @@
         "node": true
     },
     "rules": {
-        "prettier/prettier": 1,
         "no-empty": 0,
         "array-bracket-spacing": [
             1,
