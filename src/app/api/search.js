@@ -1,4 +1,5 @@
-const base_url = process.env.BASE_URL;
+import CONFIG from '../../../config/config';
+const base_url = CONFIG.baseUri;
 import { getRequest } from "../utils/request";
 
 export default class SearchAPI {

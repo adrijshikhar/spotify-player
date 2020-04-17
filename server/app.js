@@ -14,20 +14,24 @@ let cors = require("cors");
 let querystring = require("querystring");
 let cookieParser = require("cookie-parser");
 
-let client_id = "d422bafab10a47b9b31387727b3b6873"; // Your client id
-let client_secret = "9049b05daa0a471485fe0a573f4629cd"; // Your secret
-let redirect_uri = "http://localhost:8888/callback"; // Your redirect uri
+let CONFIG = require("../config/config");
 
-let scope = process.env.SCOPES;
+let client = CONFIG.auth.client; // Your client id
+let redirect_uri = CONFIG.redirectUri; // Your redirect uri
 
-const SERVER_PORT = process.env.SERVER_PORT || 8888;
-const CLIENT_PORT = process.env.SERVER_PORT || 8000;
+let scope = CONFIG.auth.scopes;
+
+const SERVER_PORT = CONFIG.SERVER_PORT || 8888;
+const CLIENT_PORT = CONFIG.CLIENT_PORT || 8000;
+
+const tokenAuth = CONFIG.auth.auth;
+
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-let generateRandomString = function(length) {
+let generateRandomString = function (length) {
   let text = "";
   let possible =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -53,9 +57,9 @@ app.get("/login", (req, res) => {
 
   // your application requests authorization
   res.redirect(
-    `https://accounts.spotify.com/authorize?${querystring.stringify({
+    `${tokenAuth.authorizePath}?${querystring.stringify({
       response_type: "code",
-      client_id,
+      client_id: client.id,
       scope,
       redirect_uri,
       state
@@ -79,7 +83,7 @@ app.get("/callback", (req, res) => {
   } else {
     res.clearCookie(stateKey);
     let authOptions = {
-      url: "https://accounts.spotify.com/api/token",
+      url: tokenAuth.tokenPath,
       form: {
         code,
         redirect_uri,
@@ -87,7 +91,7 @@ app.get("/callback", (req, res) => {
       },
       headers: {
         Authorization: `Basic ${new Buffer(
-          `${client_id}:${client_secret}`
+          `${client.id}:${client.secret}`
         ).toString("base64")}`
       },
       json: true
@@ -99,7 +103,7 @@ app.get("/callback", (req, res) => {
         let refresh_token = body.refresh_token;
 
         let options = {
-          url: "https://api.spotify.com/v1/me",
+          url: tokenAuth.tokenHost,
           headers: { Authorization: `Bearer ${access_token}` },
           json: true
         };
@@ -131,10 +135,10 @@ app.get("/refresh_token", (req, res) => {
   // requesting access token from refresh token
   let refresh_token = req.query.refresh_token;
   let authOptions = {
-    url: "https://accounts.spotify.com/api/token",
+    url: tokenAuth.tokenPath,
     headers: {
       Authorization: `Basic ${new Buffer(
-        `${client_id}:${client_secret}`
+        `${client.id}:${client.secret}`
       ).toString("base64")}`
     },
     form: {
