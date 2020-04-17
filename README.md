@@ -8,7 +8,7 @@
     * if not then, create a file with `touch ~/.bash_profile` and run the install script again
     * For more refer <https://github.com/nvm-sh/nvm#installation-and-update>
     * after installing nvm run `nvm install node && nvm use node`
-3. Copy `.env.example` to `.env` and fill the required entries
+3. Copy `config/sample.config.js` to `config/config.js` and fill the required entries
 4. Run  `npm install`
 5. Run `npm start -s`  and `node server/app.js` for development build
 

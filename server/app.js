@@ -31,7 +31,7 @@ const tokenAuth = CONFIG.auth.auth;
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-let generateRandomString = function (length) {
+let generateRandomString = function(length) {
   let text = "";
   let possible =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

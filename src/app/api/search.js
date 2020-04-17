@@ -1,4 +1,4 @@
-import CONFIG from '../../../config/config';
+import CONFIG from "../../../config/config";
 const base_url = CONFIG.baseUri;
 import { getRequest } from "../utils/request";
 
